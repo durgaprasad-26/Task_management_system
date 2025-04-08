@@ -29,7 +29,7 @@ export class TaskListComponent implements OnInit {
     });
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(){
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
   }

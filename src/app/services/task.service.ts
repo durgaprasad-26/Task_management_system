@@ -10,7 +10,7 @@ export class TaskService {
     {
       id: 1,
       title: 'Complete project documentation',
-      description: 'Finish writing the technical documentation for the new feature',
+      description: 'Finish writing the technical documentation for the Major Project',
       dueDate: new Date('2025-04-15'),
       priority: 'high',
       completed: false,
@@ -28,7 +28,7 @@ export class TaskService {
     {
       id: 3, 
       title: 'Schedule team meeting',
-      description: 'Organize weekly team sync',
+      description: 'schedule the meeting ,by today evening',
       dueDate: new Date('2025-04-10'),
       priority: 'medium',
       completed: true,
@@ -75,7 +75,7 @@ export class TaskService {
     this.tasksSubject.next(this.tasks);
   }
 
-  getTasksByCategory(): { category: string, count: number }[] {
+  getTasksByCategory(): { category: string, count: number }[]{
     const categories = this.tasks.reduce((acc, task) => {
       const category = task.category || 'Uncategorized';
       acc[category] = (acc[category] || 0) + 1;
