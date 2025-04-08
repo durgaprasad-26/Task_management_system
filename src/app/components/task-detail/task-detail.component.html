@@ -1,0 +1,58 @@
+<div class="detail-container" *ngIf="task">
+    <div class="header-row">
+      <h1 class="mat-headline-5">Task Details</h1>
+      <div class="button-actions">
+        <button mat-stroked-button [routerLink]="['/tasks']">
+          <mat-icon>list</mat-icon>
+          Back to List
+        </button>
+        <button mat-stroked-button [routerLink]="['/tasks', task.id, 'edit']">
+          <mat-icon>edit</mat-icon>
+          Edit
+        </button>
+        <button mat-stroked-button color="warn" (click)="deleteTask()">
+          <mat-icon>delete</mat-icon>
+          Delete
+        </button>
+      </div>
+    </div>
+  
+    <mat-card class="task-card">
+      <mat-card-header>
+        <div class="task-header">
+          <div class="task-title-row">
+            <h2 class="mat-headline-6">{{ task.title }}</h2>
+            <mat-chip [color]="getPriorityColor(task.priority)" selected>
+              {{ task.priority | titlecase }}
+            </mat-chip>
+          </div>
+          <div class="task-meta">
+            <span class="category-badge">{{ task.category || 'Uncategorized' }}</span>
+            <span class="due-date">Due: {{ task.dueDate | date:'fullDate' }}</span>
+          </div>
+        </div>
+      </mat-card-header>
+      
+      <mat-card-content>
+        <div class="description-section">
+          <h3 class="mat-subtitle-1">Description</h3>
+          <p class="task-description">{{ task.description }}</p>
+        </div>
+      </mat-card-content>
+      
+      <mat-card-actions>
+        <button mat-button (click)="toggleTaskCompletion()">
+          <mat-icon>{{ task.completed ? 'check_box' : 'check_box_outline_blank' }}</mat-icon>
+          {{ task.completed ? 'Mark as Incomplete' : 'Mark as Complete' }}
+        </button>
+      </mat-card-actions>
+      
+      <mat-card-footer *ngIf="task.completed">
+        <div class="completed-banner">
+          <mat-icon>done_all</mat-icon>
+          Completed
+        </div>
+      </mat-card-footer>
+    </mat-card>
+  </div>
+  

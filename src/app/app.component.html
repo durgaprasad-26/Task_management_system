@@ -1,0 +1,36 @@
+<div class="app-container">
+  <mat-toolbar color="primary" class="app-toolbar">
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Task Manager</span>
+    <span class="toolbar-spacer"></span>
+    <button mat-icon-button matTooltip="Settings">
+      <mat-icon>settings</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav mode="side" opened class="sidenav">
+      <mat-nav-list>
+        <a mat-list-item routerLink="/dashboard" routerLinkActive="active-link">
+          <mat-icon matListItemIcon>dashboard</mat-icon>
+          <span matListItemTitle>Dashboard</span>
+        </a>
+        <a mat-list-item routerLink="/tasks" routerLinkActive="active-link">
+          <mat-icon matListItemIcon>list</mat-icon>
+          <span matListItemTitle>Tasks</span>
+        </a>
+        <a mat-list-item routerLink="/tasks/new" routerLinkActive="active-link">
+          <mat-icon matListItemIcon>add</mat-icon>
+          <span matListItemTitle>Add Task</span>
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="sidenav-content">
+      <div class="content-container">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

@@ -1,0 +1,80 @@
+<div class="form-container">
+    <h1 class="mat-headline-5">{{ pageTitle }}</h1>
+  
+    <form [formGroup]="taskForm" (ngSubmit)="onSubmit()" class="task-form">
+      <mat-form-field appearance="outline">
+        <mat-label>Title</mat-label>
+        <input matInput formControlName="title" placeholder="Task title">
+        <mat-error *ngIf="taskForm.get('title')?.hasError('required')">
+          Title is required
+        </mat-error>
+        <mat-error *ngIf="taskForm.get('title')?.hasError('minlength')">
+          Title must be at least 3 characters
+        </mat-error>
+        <mat-error *ngIf="taskForm.get('title')?.hasError('maxlength')">
+          Title cannot exceed 100 characters
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description" rows="4" placeholder="Describe the task"></textarea>
+        <mat-error *ngIf="taskForm.get('description')?.hasError('required')">
+          Description is required
+        </mat-error>
+        <mat-error *ngIf="taskForm.get('description')?.hasError('minlength')">
+          Description must be at least 5 characters
+        </mat-error>
+      </mat-form-field>
+  
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="form-field-half">
+          <mat-label>Due Date</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="dueDate">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="taskForm.get('dueDate')?.hasError('required')">
+            Due date is required
+          </mat-error>
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline" class="form-field-half">
+          <mat-label>Priority</mat-label>
+          <mat-select formControlName="priority">
+            <mat-option *ngFor="let priority of priorities" [value]="priority.value">
+              {{ priority.label }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="taskForm.get('priority')?.hasError('required')">
+            Priority is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+  
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="form-field-half">
+          <mat-label>Category</mat-label>
+          <mat-select formControlName="category">
+            <mat-option value="">Uncategorized</mat-option>
+            <mat-option *ngFor="let category of categories" [value]="category">
+              {{ category }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+  
+        <div class="completed-checkbox form-field-half">
+          <mat-checkbox formControlName="completed" color="primary">
+            Mark as completed
+          </mat-checkbox>
+        </div>
+      </div>
+  
+      <div class="form-actions">
+        <button type="button" mat-button (click)="resetForm()">Reset</button>
+        <button type="button" mat-button routerLink="/tasks">Cancel</button>
+        <button type="submit" mat-raised-button color="primary">
+          {{ isEditMode ? 'Update' : 'Create' }} Task
+        </button>
+      </div>
+    </form>
+  </div>

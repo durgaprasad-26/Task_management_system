@@ -1,0 +1,83 @@
+
+.dashboard-container {
+  padding: 16px;
+}
+
+.stats-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.stats-card {
+  flex: 1;
+  min-width: 250px;
+}
+
+.progress-stats {
+  padding: 10px 0;
+}
+
+.progress-text {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.stat-value {
+  font-size: 24px;
+  font-weight: 500;
+  display: block;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.progress-percentage {
+  text-align: center;
+  margin-top: 5px;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.category-stats, .priority-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.category-item, .priority-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.upcoming-tasks {
+  margin-top: 20px;
+}
+
+.task-card {
+  margin-bottom: 16px;
+}
+
+.priority-high {
+  color: #f44336;
+}
+
+.priority-medium {
+  color: #ff9800;
+}
+
+.priority-low {
+  color: #2196f3;
+}
+
+.no-tasks {
+  padding: 20px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.6);
+  font-style: italic;
+}
